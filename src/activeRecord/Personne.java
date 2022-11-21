@@ -45,7 +45,7 @@ public class Personne {
         return p;
     }
 
-    public static ArrayList<Personne> findByNom(String nom) throws SQLException {
+    public static ArrayList<Personne> findByName(String nom) throws SQLException {
         String SQLPrep = "SELECT * FROM Personne WHERE nom=?;";
         Connection connect = DBConnection.getConnect();
         PreparedStatement prep1 = connect.prepareStatement(SQLPrep);

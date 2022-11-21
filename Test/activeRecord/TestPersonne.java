@@ -46,7 +46,7 @@ class TestPersonne {
 
     @Test
     public void test3_findByNom() throws SQLException {
-        ArrayList<Personne> listePersonne = Personne.findByNom("Spielberg");
+        ArrayList<Personne> listePersonne = Personne.findByName("Spielberg");
         assertEquals(2,listePersonne.size(),"Il devrait y avoir 2 personnes");
     }
 }
