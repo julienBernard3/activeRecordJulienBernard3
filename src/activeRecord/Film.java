@@ -49,7 +49,7 @@ public class Film {
         return f;
     }
 
-    public static ArrayList<Film> findByTitre(String titre) throws SQLException {
+    public static ArrayList<Film> findByName(String titre) throws SQLException {
         String SQLPrep = "SELECT * FROM Film WHERE titre=?;";
         Connection connect = DBConnection.getConnect();
         PreparedStatement prep1 = connect.prepareStatement(SQLPrep);
