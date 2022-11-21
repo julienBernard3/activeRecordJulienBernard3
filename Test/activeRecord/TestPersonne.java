@@ -1,5 +1,6 @@
 package activeRecord;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -21,6 +22,11 @@ class TestPersonne {
         p2.save();
         p3.save();
         p4.save();
+    }
+
+    @AfterEach
+    public void after() throws SQLException {
+        Personne.deleteTable();
     }
 
     @Test
