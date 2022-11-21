@@ -78,6 +78,10 @@ public class Personne {
         stmt.executeUpdate(drop);
     }
 
+    public void save(){
+
+    }
+
     public String getNom() {
         return this.nom;
     }

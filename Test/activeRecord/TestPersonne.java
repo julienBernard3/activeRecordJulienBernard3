@@ -1,5 +1,6 @@
 package activeRecord;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
@@ -9,10 +10,23 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class TestPersonne {
 
+    @BeforeEach
+    public void before() throws SQLException {
+        Personne.createTable();
+        Personne p1 = new Personne("Spielberg","Steven");
+        Personne p2 = new Personne("Scott","Ridley");
+        Personne p3 = new Personne("S_c_o_t_t","R_i_d_l_e_y");
+        Personne p4 = new Personne("Spielberg","StevenJr");
+        p1.save();
+        p2.save();
+        p3.save();
+        p4.save();
+    }
+
     @Test
     public void test1_findAll() throws SQLException {
         ArrayList<Personne> listePersonne = Personne.findAll();
-        assertEquals(4,listePersonne.size(),"Il devrait y avoir 2 personnes");
+        assertEquals(4,listePersonne.size(),"Il devrait y avoir 4 personnes");
 
     }
 
@@ -27,6 +41,6 @@ class TestPersonne {
     @Test
     public void test3_findByNom() throws SQLException {
         ArrayList<Personne> listePersonne = Personne.findByNom("Spielberg");
-        assertEquals(1,listePersonne.size(),"Il devrait y avoir 1 personnes");
+        assertEquals(2,listePersonne.size(),"Il devrait y avoir 2 personnes");
     }
 }
