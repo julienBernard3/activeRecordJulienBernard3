@@ -129,4 +129,8 @@ public class Personne {
     public String getPrenom() {
         return prenom;
     }
+
+    public int getId() {
+        return id;
+    }
 }
