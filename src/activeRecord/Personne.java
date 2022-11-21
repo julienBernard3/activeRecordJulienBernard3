@@ -81,6 +81,14 @@ public class Personne {
     public void save(){
 
     }
+    
+    public void delete() throws SQLException {
+        Connection connect = DBConnection.getConnect();
+        PreparedStatement prep = connect.prepareStatement("DELETE FROM Personne WHERE id=?");
+        prep.setInt(1, this.id);
+        prep.execute();
+        this.id = -1;
+    }
 
     public String getNom() {
         return this.nom;
