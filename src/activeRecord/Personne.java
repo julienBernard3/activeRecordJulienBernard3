@@ -78,8 +78,40 @@ public class Personne {
         stmt.executeUpdate(drop);
     }
 
-    public void save(){
+    public void save() throws SQLException {
+        if (this.id==-1){
+            this.saveNew();
+        }else {
+            this.update();
+        }
+    }
 
+    private void saveNew() throws SQLException {
+        Connection connect = DBConnection.getConnect();
+        String SQLPrep = "INSERT INTO Personne (nom, prenom) VALUES (?,?);";
+        PreparedStatement prep = connect.prepareStatement(SQLPrep, Statement.RETURN_GENERATED_KEYS);
+        prep.setString(1, this.nom);
+        prep.setString(2, this.prenom);
+        prep.executeUpdate();
+
+        // recuperation de la derniere ligne ajoutee (auto increment)
+        // recupere le nouvel id
+        int autoInc = -1;
+        ResultSet rs = prep.getGeneratedKeys();
+        if (rs.next()) {
+            autoInc = rs.getInt(1);
+        }
+        this.id=autoInc;
+    }
+
+    private void update() throws SQLException {
+        Connection connect = DBConnection.getConnect();
+        String SQLprep = "update Personne set nom=?, prenom=? where id=?;";
+        PreparedStatement prep = connect.prepareStatement(SQLprep);
+        prep.setString(1, this.nom);
+        prep.setString(2, this.prenom);
+        prep.setInt(3, this.id);
+        prep.execute();
     }
     
     public void delete() throws SQLException {
