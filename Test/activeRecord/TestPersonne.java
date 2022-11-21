@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PersonneTest {
+class TestPersonne {
 
     @Test
     public void test1_findAll() throws SQLException {
@@ -25,8 +25,8 @@ class PersonneTest {
     }
 
     @Test
-    public void test3_findByNom() {
-//        Personne personne = Personne.findByNom("")
-//        assertEquals(2,listePersonne.size(),"Il devrait y avoir 2 personnes");
+    public void test3_findByNom() throws SQLException {
+        ArrayList<Personne> listePersonne = Personne.findByNom("Spielberg");
+        assertEquals(1,listePersonne.size(),"Il devrait y avoir 1 personnes");
     }
 }
