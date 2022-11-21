@@ -136,4 +136,8 @@ public class Film {
     public int getId() {
         return id;
     }
+
+    public Personne getRealisateur() throws SQLException {
+        return Personne.findById(this.id_real);
+    }
 }
