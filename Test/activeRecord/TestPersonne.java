@@ -28,6 +28,7 @@ class TestPersonne {
 
     @AfterEach
     public void after() throws SQLException {
+        //On supprime la table
         Personne.deleteTable();
     }
 
