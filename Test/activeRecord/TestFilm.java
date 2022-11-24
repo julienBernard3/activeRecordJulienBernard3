@@ -65,4 +65,10 @@ class TestFilm {
         }
         assertTrue(exception,"l'exception RealisateurAbsentException devrait etre levé");
     }
+
+    @Test
+    public void test5_findByRealisateur() throws SQLException, RealisateurAbsentException {
+        ArrayList<Film> listeFilm = Film.findByRealisateur(this.p1);
+        assertEquals(2,listeFilm.size(),"Il devrait y avoir 2 films réalisé par ce réalisateur");
+    }
 }
