@@ -155,6 +155,7 @@ public class Film {
     public void save() throws SQLException, RealisateurAbsentException {
         //Vérification que le réaliateur est présent dans la base
         if(this.id_real == -1){
+            //S'il ne l'est pas on lève une exception
             throw new RealisateurAbsentException("Realisateur absent");
         }
         if (this.id==-1){
