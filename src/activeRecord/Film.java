@@ -15,6 +15,7 @@ public class Film {
      * @param p personne correspondant au réalisateur
      */
     public Film(String titre, Personne p){
+        //Initialisationd de l'id
         this.id = -1;
         this.id_real= p.getId();
         this.titre =titre;
@@ -188,7 +189,7 @@ public class Film {
     }
 
     /**
-     * methode permettant d'actualisé le film en question
+     * methode permettant d'actualisé le film en question dans la base de données
      * @throws SQLException
      */
     private void update() throws SQLException {
@@ -210,6 +211,7 @@ public class Film {
         PreparedStatement prep = connect.prepareStatement("DELETE FROM Film WHERE id=?");
         prep.setInt(1, this.id);
         prep.execute();
+        //On redéfinis l'id par -1 signifiant qu'il est absent de la talble
         this.id = -1;
     }
 
