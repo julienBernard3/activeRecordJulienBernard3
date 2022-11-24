@@ -10,7 +10,7 @@ public class CompilationMain {
 
 	public static void main(String[] args) throws SQLException, RealisateurAbsentException {
 		///////////////// test personne 
-		/*
+
 		
 		//creation de la table Personne
 		Personne.createTable();
@@ -114,7 +114,7 @@ public class CompilationMain {
 		Personne.deleteTable();
 		
 
-		*/
+
 	}
 	
 }

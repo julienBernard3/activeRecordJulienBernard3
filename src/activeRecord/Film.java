@@ -161,4 +161,17 @@ public class Film {
     public Personne getRealisateur() throws SQLException {
         return Personne.findById(this.id_real);
     }
+
+    public void setTitre(String titre) {
+        this.titre = titre;
+    }
+
+    @Override
+    public String toString() {
+        return "Film{" +
+                "id=" + id +
+                ", titre='" + titre + '\'' +
+                ", id_real=" + id_real +
+                '}';
+    }
 }
