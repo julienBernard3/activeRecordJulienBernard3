@@ -18,11 +18,15 @@ class TestFilm {
         Personne.createTable();
         this.p1 = new Personne("Spielberg","Steven");
         this.p1.save();
+        Personne p3 = new Personne("personne3Nom","Personne3Prenom");
+        p3.save();
         Film.createTable();
         Film f1=new Film("seven", p1);
-        Film f3=new Film("film2", p1);
+        Film f3=new Film("film3", p3);
+        Film f4=new Film("film4", p1);
         f1.save();
         f3.save();
+        f4.save();
         Personne p2 = new Personne("pNom","pPrenom");
         this.f2 = new Film("test2",p2);
     }
@@ -36,7 +40,7 @@ class TestFilm {
     @Test
     public void test1_findAll() throws SQLException {
         ArrayList<Film> listeFilm = Film.findAll();
-        assertEquals(2,listeFilm.size(),"Il devrait y avoir 2 films");
+        assertEquals(3,listeFilm.size(),"Il devrait y avoir 3 films");
 
     }
 
