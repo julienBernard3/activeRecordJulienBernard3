@@ -1,4 +1,6 @@
 package activeRecord;
+import org.junit.jupiter.api.function.Executable;
+
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -65,6 +67,22 @@ public class Film {
         }
         return listeFilm;
     }
+    public static ArrayList<Film> findByRealisateur(Personne p) throws SQLException {
+        String SQLPrep = "SELECT * FROM Film WHERE id_real=?;";
+        Connection connect = DBConnection.getConnect();
+        PreparedStatement prep1 = connect.prepareStatement(SQLPrep);
+        prep1.setInt(1, p.getId());
+        prep1.execute();
+        ResultSet rs = prep1.getResultSet();
+
+        ArrayList<Film> listeFilm = new ArrayList<Film>();
+        // s'il y a un resultat
+        while (rs.next()) {
+            Film f = new Film(rs.getInt("id"),rs.getInt("id_real"),rs.getString("titre"));
+            listeFilm.add(f);
+        }
+        return listeFilm;
+    }
 
     public static void createTable() throws SQLException {
         Connection connect = DBConnection.getConnect();
@@ -81,7 +99,10 @@ public class Film {
         stmt.executeUpdate(drop);
     }
 
-    public void save() throws SQLException {
+    public void save() throws SQLException, RealisateurAbsentException {
+        if(this.id_real == -1){
+            throw new RealisateurAbsentException("Realisateur absent");
+        }
         if (this.id==-1){
             this.saveNew();
         }else {
